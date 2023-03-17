@@ -1,0 +1,14 @@
+footer{
+    margin: 3rem;
+}
+
+.cuad{
+    border: 2px solid #ccc;
+    border-style: ridge;
+    border-radius: 20px;
+    padding: 2rem;
+}
+
+.home-icon{
+    font-size: 40px;
+}
