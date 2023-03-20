@@ -3,6 +3,7 @@ package com.ufps.userProfile.service;
 import com.ufps.userProfile.entity.Usuario;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface UsuarioService {
 
@@ -10,5 +11,9 @@ public interface UsuarioService {
 
     void eliminar(long id);
 
-    void registrar(Usuario usuario);
+    void crear(Usuario usuario);
+
+    Optional<Usuario> getUsuario(long id);
+
+    void update(Usuario usuario);
 }

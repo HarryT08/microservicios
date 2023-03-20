@@ -6,7 +6,6 @@ import com.ufps.userProfile.service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.swing.text.html.Option;
 import java.util.List;
 import java.util.Optional;
 
@@ -25,6 +24,11 @@ public class UsuarioServiceImp implements UsuarioService {
     }
 
     @Override
+    public Optional<Usuario> getUsuario(long id){
+        return usuarioRepository.findById(id);
+    }
+
+    @Override
     public void eliminar(long id) {
         Optional<Usuario> optional = usuarioRepository.findById(id);
         if(optional.isPresent()){
@@ -33,7 +37,12 @@ public class UsuarioServiceImp implements UsuarioService {
     }
 
     @Override
-    public void registrar(Usuario usuario) {
+    public void crear(Usuario usuario) {
+        usuarioRepository.save(usuario);
+    }
+
+    @Override
+    public void update(Usuario usuario){
         usuarioRepository.save(usuario);
     }
 }

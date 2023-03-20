@@ -7,6 +7,8 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
     <link href="https://cdn.datatables.net/v/dt/dt-1.13.4/datatables.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.3/dist/sweetalert2.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
     <link rel="stylesheet" href="css/styles.css">
     <title>Usuarios</title>
 </head>
@@ -28,6 +30,7 @@
                             <th>Nombre</th>
                             <th>Apellido</th>
                             <th>Usuario</th>
+                            <th>Visualizar Github</th>
                             <th>Acciones</th>
                         </thead>
                         <tbody>
@@ -56,21 +59,82 @@
                 </div>
                 <div class="modal-body">
                         <div class="form-floating mb-3">
-                            <input type="text" class="form-control" id="floatingInput" placeholder="Pepito" required>
-                            <label for="floatingInput">Nombre</label>
+                            <input type="text" class="form-control" id="nameAct" placeholder="Pepito" required>
+                            <label for="nameAct">Nombre</label>
                         </div>
                         <div class="form-floating mb-3">
-                            <input type="text" class="form-control" id="floatingInput" placeholder="Perez" required>
-                            <label for="floatingInput">Apellido</label>
+                            <input type="text" class="form-control" id="lastnameAct" placeholder="Perez" required>
+                            <label for="lastnameAct">Apellido</label>
                         </div>
                         <div class="form-floating">
-                            <input type="text" class="form-control" id="floatingInput" placeholder="ElPepitoGamer" required>
-                            <label for="floatingInput">Nombre de Usuario</label>
+                            <input type="text" class="form-control" id="usernameAct" placeholder="ElPepitoGamer" required>
+                            <label for="usernameAct">Nombre de Usuario</label>
                         </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                    <button type="submit" class="btn btn-primary">Crear</button>
+                    <button type="submit" class="btn btn-primary" onclick="createUser()">Crear</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" tabindex="-1" id="modalGithub">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Visualizar Usuario</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                        <div class="form-floating mb-3">
+                            <img id="imgGit" src="" class="rounded mx-auto d-block" alt="userImage">
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" id="usernameGit" disabled>
+                            <label for="usernameAct">Nombre de Usuario</label>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input type="number" class="form-control" id="followersGit" disabled>
+                            <label for="followersAct">Seguidores</label>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input type="number" class="form-control" id="followingGit" disabled>
+                            <label for="followingAct">Siguiendo</label>
+                        </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" tabindex="-1" id="modalUpdateUsuario">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Actualizar Usuario</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <input type="hidden" class="form-control" id="idAbd">
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="nameAbd" placeholder="Pepito" required>
+                        <label for="nameAbd">Nombre</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="lastnameAbd" placeholder="Perez" required>
+                        <label for="lastnameAbd">Apellido</label>
+                    </div>
+                    <div class="form-floating">
+                        <input type="text" class="form-control" id="usernameAbd" placeholder="ElPepitoGamer" required>
+                        <label for="usernameAbd">Nombre de Usuario</label>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="submit" class="btn btn-primary" onclick="updateUser()">Actualizar</button>
                 </div>
             </div>
         </div>
@@ -79,6 +143,8 @@
     <script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
     <script src="https://cdn.datatables.net/v/dt/dt-1.13.4/datatables.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.3/dist/sweetalert2.all.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/js/all.min.js"></script>
     <script src="js/index.js"></script>
 </body>
 </html>
