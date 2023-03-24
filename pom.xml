@@ -10,7 +10,6 @@
 	</parent>
 	<groupId>com.ufps</groupId>
 	<artifactId>userProfile</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
 	<name>userProfile</name>
 	<description>Initial Api Rest Users</description>
 	<properties>
